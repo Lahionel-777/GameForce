@@ -1,0 +1,297 @@
+<html>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - TechStore Pro</title>
+    <meta name="description" content="Explora nuestro catálogo completo de laptops, celulares y componentes PC">
+
+    <!-- TailwindCSS - Misma ruta que index.html -->
+    <link href="../styles/output.css" rel="stylesheet">
+    <link rel="icon" href="data:,">
+</head>
+
+<body class="bg-gray-900 font-sans">
+    <!-- HEADER - Igual que index.html -->
+    <header class="bg-gray-900 shadow-2x1 border-b-4 border-purple-600 sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="text-2xl font-bold text-purple-600"> <a href="index.html">GAMEFORCE</a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6">
+                    <a href="index.html" class="text-gray-200 hover:text-purple-600 font-medium">Inicio</a>
+                    <a href="productos.html" class="text-purple-600 font semibold">Productos</a>
+                    <a href="index.html#categorias"
+                        class="text-gray-200 hover:text-purple-600 font-medium">Categorías</a>
+                    <a href="contactos.html" class="text-gray-200 hover:text blue-600 font-medium">Contacto</a>
+                </div>
+                <!-- Cart and Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Carrito -->
+
+
+
+                    <a href="carrito.html" class="relative text-gray-200 hover:text-purple-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.1 5M7 13l-1.1 5m0 0h3.1M17 21a2 2 0 100-4 2 2 0 000 4zM9 21a2 2 0 100-4 2 2 0 000 4z">
+                            </path>
+                        </svg>
+
+                        <span id="cart-counter" tyle="display: none;"
+                            class="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">0</span>
+
+                    </a>
+
+                    <!-- Mobile menu button -->
+                    <button class="md:hidden text-gray-200 hover:text-purple-600" id="mobile-menu-button">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="md:hidden mt-4 hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-2 pb-4">
+                    <a href="index.html" class="text-gray-200 hover:text-purple-600 py-2">Inicio</a>
+                    <a href="productos.html" class="text-purple-600 font-semibold py-2">Productos</a>
+                    <a href="index.html#categorias" class="text-gray-200 hover:text-purple-600 py-2">Categorías</a>
+                    <a href="index.html#contacto" class="text-gray-200 hover:text blue-600 py-2">Contacto</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+
+        <!-- Breadcrumbs y Título -->
+        <div class="mb-8">
+            <nav class="text-sm text-white mb-4">
+                <a href="index.html" class="hover:text-purple-600 transition-colors duration-200">Inicio</a>
+                <span class="mx-2">></span>
+                <span class="text-white">Productos</span>
+            </nav>
+            <h1 class="text-3xl font-bold text-white bg-gray-900 shadow-2x1 border-b-4 border-purple-600  ">Catálogo de
+                Productos</h1>
+            <p class="text-white mt-2">Encuentra la mejor tecnología al mejor precio</p>
+        </div>
+        <!-- BUSCADOR Y FILTROS -->
+        <div class="bg-gray-700 rounded-xl shadow-lg p-6 mb-8">
+            <!-- Barra de Búsqueda -->
+            <div class="mb-6">
+                <div class="relative">
+                    <input type="text" placeholder="Buscar productos..."
+                        class="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition colors duration-200"
+                        id="search-input">
+                    <svg class="absolute left-4 top-3.5 w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+            <!-- Filtros -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4"> <!-- Filtro Categoría -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-200 mb 2">Categoría</label>
+                    <select
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        id="category-filter">
+                        <option value="">Todas las categorías</option>
+                        <option value="laptops">Laptops</option>
+                        <option value="celulares">Celulares</option>
+                        <option value="componentes">Componentes PC</option>
+                        <option value="accesorios">Accesorios</option>
+                    </select>
+                </div>
+                <!-- Filtro Precio -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-200 mb 2">Rango de Precio</label>
+                    <select
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        id="price-filter">
+                        <option value="">Cualquier precio</option>
+                        <option value="0-500000">$0 - $500.000</option>
+                        <option value="500000-1500000">$500.000 - $1.500.000</option>
+                        <option value="1500000-3000000">$1.500.000 - $3.000.000</option>
+                        <option value="3000000+">$3.000.000+</option>
+                    </select>
+                </div>
+                <!-- Filtro Ordenamiento -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-200 mb 2">Ordenar por</label>
+                    <select
+                        class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        id="sort-filter">
+                        <option value="relevance">Relevancia</option>
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="name">Nombre A-Z</option>
+                        <option value="newest">Más Nuevos</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- GRID DE PRODUCTOS -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="products-grid">
+
+            <!-- PRODUCTO 1: (Ejemplo completo) -->
+            <div class="border rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 product-card border-purple-400"
+                data-category="laptops" data-price="6200000" data-product-id="HK-1">
+                <div
+                    class="bg-gradient-to-br from-gray-400 to-gray-700 h-64 flex items-center justify-center relative overflow-hidden">
+                    <img src="../assets/imagens/hollow-knight.jpg" alt="Icono de descuento"
+                        class="h-100 w-100 object-contain filter drop-shadow-lg" />
+                    <div class="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold">
+                        -25%
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-bold text-xl mb-2 text-purple-600">Hollow knight</h3>
+                    <p class="text-white mb-4">Explora un reino subterráneo lleno de misterios, enfréntate a poderosos
+                        enemigos y descubre secretos ocultos en Hollow Knight.
+                        y su hijo.</p>
+                    <div class="flex items-center mb-4">
+                        <div class="flex text-yellow-500">⭐⭐⭐⭐⭐</div>
+                        <span class="text-white text-sm ml-2">(188 reseñas)</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-red-500 line-through text-sm">$25.99 </span>
+                            <span class="text-3xl font-bold text-purple-600 ml-2">$20.49 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2 px-6 pb-4">
+                    <a href="producto-detalle.html?id=HK-1"
+                        class="bg-yellow-500 text-white px-3 py-2 rounded-lg hover:bg-yellow-600 transition duration-300 flex-1 text-sm text-center">
+                        Ver Detalles
+                    </a>
+                    <button
+                        class="add-to-cart-btn bg-purple-600 text-white px-3 py-2 rounded-lg hover:bg-purple-700 transition duration-300 flex-1 text-sm"
+                        data-product-id="HK-1"
+                        onclick="window.addToCart({id: 'HK-1', name: 'Hollow Knight', price: 20490, image: '../assets/imagens/hollow-knight.jpg'})">
+                        Al Carrito
+                    </button>
+                </div>
+            </div>
+
+
+
+
+            <!-- PAGINACIÓN -->
+            <div class="mt-12 flex justify-center">
+                <nav class="flex space-x-2">
+                    <button
+                        class="px-4 py-2 border border-gray-300 rounded-lg text-gray-200 hover:bg-purple-600 disabled:opacity-50"
+                        disabled>
+                        Anterior
+                    </button>
+                    <button class="px-4 py-2 bg-purple-600 text-white rounded lg">1</button>
+                    <button
+                        class="px-4 py-2 border border-gray-300 rounded-lg text-gray-200 hover:bg-purple-600">2</button>
+                    <button
+                        class="px-4 py-2 border border-gray-300 rounded-lg text-gray-200 hover:bg-purple-600  ">3</button>
+                    <button
+                        class="px-4 py-2 border border-gray-300 rounded-lg text-gray-200 hover:bg-purple-600 hover:text-white">
+                        Siguiente
+                    </button>
+                </nav>
+            </div>
+    </main>
+    <!-- FOOTER - Igual que index.html -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">GAMEFORCE</h3>
+                    <p class="text-gray-400 mb-4">Tu tienda de tecnología deconfianza desde 2020.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">��</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">��</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">��</a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Enlaces</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-white transition-colors duration-200">Inicio</a></li>
+                        <li><a href="productos.html"
+                                class="hover:text-white transition-colors duration-200">Productos</a></li>
+                        <li><a href="carrito.html" class="hover:text-white transition-colors duration-200">Carrito</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Atención</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html#contacto"
+                                class="hover:text-white transition-colors duration-200">Contacto</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Envíos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Devoluciones</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Términos</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray 400">
+                <p>&copy; 2025 TechStore Pro. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- SCRIPTS - Orden importante -->
+    <!-- SCRIPTS - ORDEN CORREGIDO CON API -->
+    <script src="../scripts/api.js"></script>
+    <script src="../scripts/productos-api.js"></script>
+    <script src="../scripts/carrito.js"></script>
+    <script src="../scripts/productos-filtros.js"></script>
+
+    <script>
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const product = {
+                        id: btn.dataset.productId,
+                        name: btn.dataset.productName,
+                        price: parseFloat(btn.dataset.productPrice),
+                        image: btn.dataset.productImage
+                    };
+                    window.addToCart(product);
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            updateCartCounter();
+        });
+
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', updateCartCounter);
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
